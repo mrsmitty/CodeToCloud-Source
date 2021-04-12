@@ -1,4 +1,4 @@
-name: Docker
+name: Docker-fabrikam-web
 
 on:
   push:
