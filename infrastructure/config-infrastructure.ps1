@@ -21,7 +21,7 @@ az webapp config appsettings set -n $webappName `
 az webapp config container set `
     --docker-registry-server-password $ghPat `
     --docker-registry-server-url https://ghcr.io `
-    --docker-registry-server-user notapplicable `
+    --docker-registry-server-user USERNAME `
     --multicontainer-config-file docker-compose.yml `
     --multicontainer-config-type COMPOSE `
     --name $webappName `
