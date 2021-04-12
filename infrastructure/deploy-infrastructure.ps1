@@ -3,6 +3,7 @@ $resourcegroupName = "fabmedical-rg-" + $studentprefix
 $cosmosDBName = "fabmedical-cdb-" + $studentprefix
 $webappName = "fabmedical-web-" + $studentprefix
 $planName = "fabmedical-plan-" + $studentprefix
+$appInsights = "fabmedicalai-" + $studentsuffix
 $location1 = "westeurope"
 $location2 = "northeurope"
 
@@ -24,3 +25,15 @@ az webapp create --resource-group $resourcegroupName `
     --plan $planName `
     --name $webappName `
     -i nginx
+
+    
+az extension add --name application-insights
+$ai = az monitor app-insights component create `
+    --app $appInsights `
+    --location $location1 `
+    --kind web `
+    -g $resourcegroupName `
+    --application-type web `
+    --retention-time 120 | ConvertFrom-Json
+
+Write-Host "AI Instrumentation Key=$($ai.instrumentationKey)"
