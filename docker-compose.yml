@@ -1,15 +1,15 @@
 version: "3.4"
 services:
   api:
-    image: ghcr.io/mrsmitty/fabrikam-api:latest
+    image: ghcr.io/<yourgithubaccount>/fabrikam-api:latest
     ports:
       - "3001:3001"
 
   web:
-    image: ghcr.io/mrsmitty/fabrikam-web:latest
+    image: ghcr.io/<yourgithubaccount>/fabrikam-web:latest
     depends_on:
-      - api
+        - api
     environment:
-      CONTENT_API_URL: http://api:3001
+        CONTENT_API_URL: http://api:3001
     ports:
-      - "3000:80"
+        - "3000:80"       
